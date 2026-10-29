@@ -25,7 +25,10 @@ Everything below exists to enforce those two sentences.
 3. **Only now** write and run code. Output to `runs/<name>.json`.
 4. Write `docs/<NAME>_RESULT.md`. Re-verify the hash with `python3 src/prereg.py verify`.
 5. Register every quoted figure in `PROVENANCE.md` as `| claim | value | path:line | token |`.
-6. `python3 src/check_provenance.py` must print **0 broken**. It exits non-zero otherwise.
+6. `python3 src/check_all.py` must report all checks passing. It exits non-zero otherwise:
+   - `check_provenance.py` — every registered figure resolves to `file:line` or a JSON key
+   - `check_decisions.py` — every bare `A-NN` cited here is defined here
+   - `prereg.py verify` — the prereg hash still matches (I-5)
 7. Report the gate verdict **exactly as written**, including when it fails.
 
 ## Layout
@@ -37,14 +40,25 @@ falsifier/
 ├── DECISIONS.md           ADR ledger; corrections are kept, not deleted
 ├── PROVENANCE.md          the citation registry (A-22)
 ├── src/
-│   ├── prereg.py          lock / verify a preregistration by sha256
-│   └── check_provenance.py  executable citation checker (A-23)
+│   ├── prereg.py            lock / verify a preregistration by sha256
+│   ├── check_provenance.py  executable citation checker (A-23)
+│   ├── check_decisions.py   repo:A-NN namespace guard
+│   └── check_all.py         runs every check; non-zero if any fails
 ├── docs/
 │   ├── HYPOTHESIS.md      the template to fill in
 │   └── RESULT_TEMPLATE.md
 ├── runs/                  locks + result JSON
 └── data/                  inputs; committed, never edited in place
 ```
+
+## Cross-project citations
+
+Decision IDs are **repo-local**. Two repositories built from this template will share the `A-NN`
+form with partial overlap and divergent text, so a bare `A-23` becomes ambiguous the moment a
+second repo exists. Cite across projects as `repo:A-NN`, and let `src/check_decisions.py` fail the
+build on a bare orphan. (This is not hypothetical: in the source project, `A-06..A-08` were
+rewritten rather than copied, one repo owned `A-09..A-20`, the other owned `A-24`, and the
+collision was created by the act of templating.)
 
 ## The ten invariants
 

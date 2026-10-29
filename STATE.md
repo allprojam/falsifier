@@ -9,7 +9,7 @@
 | | |
 |---|---|
 | Prereg hashes | `python3 src/prereg.py verify docs/HYPOTHESIS.md` |
-| Provenance registry | `python3 src/check_provenance.py` → expect `0 broken` |
+| Provenance registry | `python3 src/check_all.py` → expect `3/3 checks passed` |
 | Open blockers | |
 | Deliverable | |
 
@@ -42,6 +42,5 @@ Statuses: **current** · **pre-fix engine** (verdict stands, numbers unverified)
 ## How to verify the whole board
 
 ```bash
-python3 src/check_provenance.py      # expect: 0 broken
-python3 src/prereg.py verify docs/HYPOTHESIS.md
+python3 src/check_all.py            # expect: 3/3 checks passed
 ```
