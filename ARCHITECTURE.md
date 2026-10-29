@@ -57,7 +57,7 @@ Decision IDs are **repo-local**. Two repositories built from this template will 
 form with partial overlap and divergent text, so a bare `A-23` becomes ambiguous the moment a
 second repo exists. Cite across projects as `repo:A-NN`, and let `src/check_decisions.py` fail the
 build on a bare orphan. (This is not hypothetical: in the source project, `A-06..A-08` were
-rewritten rather than copied, one repo owned `A-09..A-20`, the other owned `A-24`, and the
+rewritten rather than copied, one repo owned `gold_macro:A-09..A-20`, the other owned `falsifier:A-24`, and the
 collision was created by the act of templating.)
 
 ## The ten invariants
