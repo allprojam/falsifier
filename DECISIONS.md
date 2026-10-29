@@ -1,5 +1,11 @@
 # DECISIONS — the ADR ledger
 
+> **This numbering is local to this repository.** It is not a global namespace, and it does not
+> match `/root/agency_bot/workspace/gold_macro/DECISIONS.md`, which carries **A-09…A-20** (asset-
+> specific findings and corrections) that are deliberately **absent here**, and which **has no
+> A-24**. Cite across projects as `<repo>:A-NN`. A bare `A-23` is ambiguous once a second repo
+> exists.
+
 Locked decisions in order. Each has a status, the reason it exists, and where it can be checked.
 Entries marked **CORRECTED** record a decision that was made, published, then found wrong by
 measurement. They are kept, never deleted — a ledger with no corrections is a ledger nobody
